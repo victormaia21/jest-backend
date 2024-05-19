@@ -18,7 +18,7 @@ import { UsersModule } from './users/users.module';
       password: process.env.DATABASE_PASSWORD,
       database: process.env.DATABASE_NAME,
       entities: [Movie, User],
-      synchronize: true, // use isso apenas para desenvolvimento
+      synchronize: true,
     }),
     MoviesModule,
     UsersModule,

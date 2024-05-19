@@ -1,60 +1,16 @@
-import {
-  Injectable,
-  InternalServerErrorException,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Movie } from './movie.entity';
 import { BadRequestException } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
 export class MoviesService {
   constructor(
     @InjectRepository(Movie)
     private moviesRepository: Repository<Movie>,
-    private jwtService: JwtService,
   ) {}
-
-  private async verifyAuthorization(authorization: string) {
-    try {
-      if (!authorization) {
-        throw new BadRequestException('Token required');
-      }
-
-      const token = authorization.split(' ')[1];
-
-      if (!token) {
-        throw new BadRequestException('Token required');
-      }
-
-      const decode = this.jwtService.decode(token, {
-        complete: true,
-      });
-      if (!decode) {
-        throw new BadRequestException('Erro with payload');
-      }
-      const { id } = decode.payload;
-
-      if (!id) {
-        throw new BadRequestException('There was an error with the token.');
-      }
-      const userExisting = await this.moviesRepository.findBy({ id: id });
-
-      if (!userExisting) {
-        throw new NotFoundException('User not found');
-      }
-    } catch (error) {
-      throw new InternalServerErrorException(
-        'There was some issue with the token.',
-      );
-    }
-  }
-
-  async create(movie: Movie, authorization: string) {
-    await this.verifyAuthorization(authorization);
-
+  async create(movie: Movie) {
     if (!movie.name) {
       throw new BadRequestException('Name required');
     }
@@ -63,21 +19,14 @@ export class MoviesService {
       throw new BadRequestException('Category required');
     }
 
-    if (!movie.gender) {
-      throw new BadRequestException('Gender required');
-    }
-
     return this.moviesRepository.save(movie);
   }
 
-  async findAll(authorization: string) {
-    this.verifyAuthorization(authorization);
+  async findAll() {
     return this.moviesRepository.find();
   }
 
-  async deleteMovieById(id: string, authorization: string) {
-    this.verifyAuthorization(authorization);
-
+  async deleteMovieById(id: string) {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
 
@@ -92,8 +41,7 @@ export class MoviesService {
     };
   }
 
-  async updateMovieById(id: string, movie: Movie, authorization: string) {
-    this.verifyAuthorization(authorization);
+  async updateMovieById(id: string, movie: Movie) {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
 
