@@ -8,15 +8,15 @@ import { UsersModule } from './users/users.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env',
+      isGlobal: true,
     }),
     TypeOrmModule.forRoot({
-      type: process.env.DATABASE_TYPE,
-      host: process.env.DATABASE_HOST,
-      port: process.env.DATABASE_PORT || 5432,
-      username: process.env.DATABASE_USERNAME,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME,
+      type: process.env.DATABASE_TYPE as 'postgres',
+      host: 'postgres' || process.env.DATABASE_HOST,
+      port: Number(process.env.DATABASE_PORT) || 5432,
+      username: `${process.env.DATABASE_USERNAME}`,
+      password: `${process.env.DATABASE_PASSWORD}`,
+      database: `${process.env.DATABASE_NAME}`,
       entities: [Movie, User],
       synchronize: true,
     }),

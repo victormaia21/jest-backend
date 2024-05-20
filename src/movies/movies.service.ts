@@ -10,7 +10,8 @@ export class MoviesService {
     @InjectRepository(Movie)
     private moviesRepository: Repository<Movie>,
   ) {}
-  async create(movie: Movie) {
+
+  async create(movie: Movie): Promise<Movie> {
     if (!movie.name) {
       throw new BadRequestException('Name required');
     }
@@ -22,11 +23,11 @@ export class MoviesService {
     return this.moviesRepository.save(movie);
   }
 
-  async findAll() {
+  async findAll(): Promise<Movie[]> {
     return this.moviesRepository.find();
   }
 
-  async deleteMovieById(id: string) {
+  async deleteMovieById(id: string): Promise<{ message: string }> {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
 
@@ -41,7 +42,10 @@ export class MoviesService {
     };
   }
 
-  async updateMovieById(id: string, movie: Movie) {
+  async updateMovieById(
+    id: string,
+    movie: Movie,
+  ): Promise<{ message: string }> {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
 

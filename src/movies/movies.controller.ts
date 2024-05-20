@@ -45,8 +45,8 @@ export class MoviesController {
       example: [
         {
           id: 1,
-          name: 'victor',
-          category: 'Male',
+          name: 'Spider-Man',
+          category: 'Action',
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -78,7 +78,7 @@ export class MoviesController {
     description: 'The movie has been successfully deleted.',
   })
   @ApiResponse({ status: 404, description: 'Movie not found.' })
-  deleteMovieById(@Param('id') id: string) {
+  deleteMovieById(@Param('id') id: string): Promise<{ message: string }> {
     return this.moviesService.deleteMovieById(id);
   }
 
@@ -99,7 +99,10 @@ export class MoviesController {
     description: 'Movie updated successfully',
   })
   @ApiResponse({ status: 404, description: 'Movie not found.' })
-  updateMovieById(@Param('id') id: string, @Body() movie: Movie) {
+  updateMovieById(
+    @Param('id') id: string,
+    @Body() movie: Movie,
+  ): Promise<{ message: string }> {
     return this.moviesService.updateMovieById(id, movie);
   }
 }
