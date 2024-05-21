@@ -38,6 +38,9 @@ Este projeto faz uso de diversas tecnologias e ferramentas, incluindo:
 ![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white)
 
+## Tecnologias
+Para ter acesso ao swagger:[text](http://34.227.192.204:3000/api#/)
+
 ## Setup
 
 ### Iniciando o Projeto Localmente
