@@ -39,7 +39,7 @@ Este projeto faz uso de diversas tecnologias e ferramentas, incluindo:
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white)
 
 ## Tecnologias
-Para ter acesso ao swagger:[text](http://34.227.192.204:3000/api#/)s
+Para ter acesso ao swagger:[text](http://34.227.192.204:3000/api#/)
 
 ## Setup
 
