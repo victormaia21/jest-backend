@@ -12,8 +12,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
+    .setTitle('Api documentação')
     .setVersion('1.0')
     .build();
 
