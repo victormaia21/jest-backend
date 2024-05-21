@@ -58,12 +58,12 @@ export class MoviesService {
   ): Promise<{ message: string }> {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
-
+    console.log(movie);
     if (!movieExisting) {
       throw new NotFoundException('Movie not found');
     }
 
-    await this.moviesRepository.update({ id: newId }, movie);
+    await this.moviesRepository.update(id, movie);
 
     return {
       message: 'Movie updated successfully',
