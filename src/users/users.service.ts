@@ -47,7 +47,7 @@ export class UsersService {
     return this.usersRepository.save(newUser);
   }
 
-  async login(user: { email: string; password: string }): Promise<{
+  async signIn(user: { email: string; password: string }): Promise<{
     token: string;
     id: number;
     message: string;

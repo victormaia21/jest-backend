@@ -7,6 +7,7 @@ import {
   Param,
   Put,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -19,11 +20,13 @@ import {
 import { MoviesService } from './movies.service';
 import { Movie } from './movie.entity';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { CacheInterceptor } from '@nestjs/cache-manager';
 
 @ApiTags('movies')
 @UseGuards(AuthGuard)
 @ApiBearerAuth()
 @Controller('movies')
+@UseInterceptors(CacheInterceptor)
 export class MoviesController {
   constructor(private readonly moviesService: MoviesService) {}
 

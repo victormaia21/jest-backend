@@ -45,11 +45,11 @@ export class UsersController {
     },
   })
   @ApiResponse({ status: 400, description: 'Invalid email or password.' })
-  async login(@Body() user: { email: string; password: string }): Promise<{
+  async signIn(@Body() user: { email: string; password: string }): Promise<{
     token: string;
     id: number;
     message: string;
   }> {
-    return await this.usersService.login(user);
+    return await this.usersService.signIn(user);
   }
 }
