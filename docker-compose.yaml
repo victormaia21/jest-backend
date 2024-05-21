@@ -5,7 +5,7 @@ services:
     image: postgres
     restart: always
     env_file:
-      - ./.env.production
+      - ./.env
     environment:
       POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
       POSTGRES_USER: ${DATABASE_USERNAME}
@@ -25,7 +25,7 @@ services:
       dockerfile: Dockerfile
     container_name: nest-app
     env_file:
-      - ./.env.production
+      - ./.env
     environment:
       PORT: ${PORT}
       DATABASE_PASSWORD: ${DATABASE_PASSWORD}
