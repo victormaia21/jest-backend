@@ -1,73 +1,98 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Projeto de API em Rest
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este é um projeto de exemplo de uma API REST feito em Nest.js, desenvolvido como parte do desafio proposto pela MKS Desenvolvimento de Sistemas e Empreendimentos Ltda.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Link de acesso ao projeto
 
-## Description
+[https://github.com/victormaia21/jest-backend](https://github.com/victormaia21/jest-backend)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Sumário
 
-## Installation
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Tecnologias](#tecnologias)
+- [Setup](#setup)
+- [Abordagem](#abordagem)
+- [License](#license)
 
-```bash
-$ yarn install
-```
+## Sobre o Projeto
 
-## Running the app
+Este projeto demonstra a criação de uma API RESTful usando o framework Nest.js. O objetivo é fornecer um exemplo simples para configurar e executar o projeto, bem como detalhes sobre a integração contínua com o GitHub Actions.
 
-```bash
-# development
-$ yarn run start
+## Tecnologias
 
-# watch mode
-$ yarn run start:dev
+Este projeto faz uso de diversas tecnologias e ferramentas, incluindo:
 
-# production mode
-$ yarn run start:prod
-```
+- **Nest.js**: Um framework progressivo para a construção de aplicações Node.js escaláveis e eficientes.
+- **TypeScript**: Um superconjunto tipado de JavaScript que compila para JavaScript puro.
+- **TypeORM**: Um ORM (Object-Relational Mapper) para TypeScript e JavaScript (ES7, ES6, ES5).
+- **Docker**: Uma plataforma que permite a criação, implantação e execução de aplicativos em contêineres.
+- **Redis**: Um banco de dados em memória usado como cache e broker de mensagens.
+- **PostgreSQL**: Um sistema de gerenciamento de banco de dados objeto-relacional.
+- **Swagger**: Uma ferramenta para documentação de APIs RESTful.
+- **GitHub Actions**: Uma funcionalidade do GitHub que permite a automação de fluxos de trabalho, como integração contínua e implantação contínua.
 
-## Test
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+![NestJs](https://img.shields.io/badge/nestjs-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?&style=for-the-badge&logo=redis&logoColor=white)
 
-```bash
-# unit tests
-$ yarn run test
+## Setup
 
-# e2e tests
-$ yarn run test:e2e
+### Iniciando o Projeto Localmente
 
-# test coverage
-$ yarn run test:cov
-```
+Para iniciar o projeto localmente, siga as instruções abaixo:
 
-## Support
+1. **Clone o Repositório**: Faça uma cópia deste repositório em sua máquina local.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+2. **Instale as Dependências**: Certifique-se de que você possui Node.js e npm instalados. Use npm ou yarn para instalar as dependências.
 
-## Stay in touch
+   ```bash
+   npm install
+   ```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+3. **Configuração do Banco de Dados**: Certifique-se de ter o PostgreSQL e o Redis configurados e rodando. Altere as variáveis de ambiente conforme necessário no arquivo `.env`.
 
-## License
+4. **Migrações do Banco de Dados**: Execute as migrações para configurar o banco de dados:
 
-Nest is [MIT licensed](LICENSE).
+   ```bash
+   npm run typeorm migration:run
+   ```
+
+5. **Inicie o Servidor de Desenvolvimento**:
+
+   ```bash
+   npm run start:dev
+   ```
+
+6. Agora, você pode acessar o projeto em [http://localhost:3000/](http://localhost:3000/).
+
+### Iniciando o Projeto com Docker
+
+Se preferir usar Docker, siga estas etapas:
+
+1. **Clone o Repositório**: Clone o repositório em sua máquina local.
+
+2. Certifique-se de que o Docker e o Docker Compose estejam instalados.
+
+3. Construa o ambiente de desenvolvimento e inicie o servidor com o comando:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+4. Agora, você pode acessar o projeto em [http://localhost:3000/](http://localhost:3000/).
+
+## Abordagem
+
+- **Design Patterns**: Aplicamos padrões de design reconhecidos, como a injeção de dependência do Nest.js e o uso de módulos, controladores e serviços para promover a separação de responsabilidades em nossa aplicação.
+
+- **Versionamento de API**: Para garantir a estabilidade e compatibilidade, adotamos um sistema de versionamento de API. Isso permite a evolução controlada da API sem impactar os clientes existentes.
+
+- **Estilo de Código**: Seguimos um estilo de código consistente e claro, aderindo às diretrizes do TypeScript e do Nest.js. Utilizamos nomes de variáveis descritivos e optamos pelo uso de comentários significativos quando necessário.
+
+- **Integração Contínua**: Implementamos um pipeline de integração contínua usando o GitHub Actions. Isso nos permitiu automatizar testes, análise de código e implantação.
+
+- **Commits Semânticos**: Adotamos a prática de commits semânticos para manter um histórico de alterações legível e informativo.
+

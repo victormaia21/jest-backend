@@ -1,17 +1,17 @@
-FROM node:14 as base
+# Dockerfile
+FROM node:18 as base
 
 WORKDIR /app
 
-RUN groupadd app && useradd app -g app
+COPY package*.json ./
 
-COPY package*.json /app
+RUN npm install
 
-RUN npm i
+COPY . .
 
-COPY . /app
+# Instalação global do CLI do NestJS
+RUN npm install -g @nestjs/cli
 
-FROM base as production
-
-ENV NODE_PATH=./build
-
-RUN npm run build
+# Use o base como base para o desenvolvimento
+FROM base as development
+CMD ["npm", "run", "start:dev"]

@@ -17,7 +17,7 @@ export class UsersService {
     private jwtService: JwtService,
   ) {}
 
-  async register(user: User) {
+  async register(user: User): Promise<User> {
     if (!user.email) {
       throw new BadRequestException('Email required');
     }
@@ -47,7 +47,11 @@ export class UsersService {
     return this.usersRepository.save(newUser);
   }
 
-  async login(user: { email: string; password: string }) {
+  async signIn(user: { email: string; password: string }): Promise<{
+    token: string;
+    id: number;
+    message: string;
+  }> {
     if (!user.email) {
       throw new BadRequestException('Email required');
     }

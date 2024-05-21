@@ -1,16 +1,20 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Movie } from './movie.entity';
 import { BadRequestException } from '@nestjs/common';
+import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Cache } from 'cache-manager';
 
 @Injectable()
 export class MoviesService {
   constructor(
     @InjectRepository(Movie)
     private moviesRepository: Repository<Movie>,
+    @Inject(CACHE_MANAGER) private cacheManager: Cache,
   ) {}
-  async create(movie: Movie) {
+
+  async create(movie: Movie): Promise<Movie> {
     if (!movie.name) {
       throw new BadRequestException('Name required');
     }
@@ -22,11 +26,18 @@ export class MoviesService {
     return this.moviesRepository.save(movie);
   }
 
-  async findAll() {
-    return this.moviesRepository.find();
+  async findAll(): Promise<Movie[]> {
+    const cacheMovie = await this.cacheManager.get<string>('movies');
+    if (cacheMovie) {
+      console.log('cache deu certo');
+      return JSON.parse(cacheMovie);
+    }
+    const movies = await this.moviesRepository.find();
+    await this.cacheManager.set('movies', JSON.stringify(movies), 30 * 1000);
+    return movies;
   }
 
-  async deleteMovieById(id: string) {
+  async deleteMovieById(id: string): Promise<{ message: string }> {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
 
@@ -41,7 +52,10 @@ export class MoviesService {
     };
   }
 
-  async updateMovieById(id: string, movie: Movie) {
+  async updateMovieById(
+    id: string,
+    movie: Movie,
+  ): Promise<{ message: string }> {
     const newId = Number(id);
     const movieExisting = await this.moviesRepository.findOneBy({ id: newId });
 
