@@ -46,6 +46,7 @@ export class MoviesService {
     }
 
     this.moviesRepository.delete({ id: newId });
+    await this.cacheManager.del('movies');
 
     return {
       message: 'Movie deleted successfully',
