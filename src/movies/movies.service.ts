@@ -22,7 +22,7 @@ export class MoviesService {
     if (!movie.category) {
       throw new BadRequestException('Category required');
     }
-
+    await this.cacheManager.del('movies');
     return this.moviesRepository.save(movie);
   }
 
@@ -63,7 +63,7 @@ export class MoviesService {
     if (!movieExisting) {
       throw new NotFoundException('Movie not found');
     }
-
+    await this.cacheManager.del('movies');
     await this.moviesRepository.update(id, movie);
 
     return {
