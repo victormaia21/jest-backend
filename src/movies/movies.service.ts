@@ -27,13 +27,13 @@ export class MoviesService {
   }
 
   async findAll(): Promise<Movie[]> {
-    const cacheMovie = await this.cacheManager.get<string>('movies');
+    const cacheMovie = await this.cacheManager.get<Movie[]>('movies');
     if (cacheMovie) {
       console.log('cache deu certo');
-      return JSON.parse(cacheMovie);
+      return cacheMovie;
     }
     const movies = await this.moviesRepository.find();
-    await this.cacheManager.set('movies', JSON.stringify(movies), 30 * 1000);
+    await this.cacheManager.set('movies', movies, 30 * 1000);
     return movies;
   }
 
